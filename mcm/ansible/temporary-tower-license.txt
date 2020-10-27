@@ -1,0 +1,9 @@
+{
+    "company_name": "IBM", 
+    "hostname": "04705af653bb419083de16058ca1804b", 
+    "instance_count": 100, 
+    "license_date": 1602017799, 
+    "license_key": "93c79ae9599c59b44a4986a203c925a742d22629cee867a847c5ec38eea2c70a", 
+    "license_type": "enterprise", 
+    "subscription_name": "Red Hat Ansible Tower, Standard (100 Managed Nodes)"
+}

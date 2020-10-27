@@ -1,0 +1,49 @@
+camMongoPV:
+ name: "cam-mongo-pv"
+ persistence:
+   enabled: true
+   useDynamicProvisioning: true
+   existingClaimName: ""
+   storageClassName: "rook-ceph-block-internal"
+   accessMode: ReadWriteOnce
+size: 15Gi
+
+camLogsPV:
+ name: "cam-logs-pv"
+ persistence:
+   enabled: true
+   useDynamicProvisioning: true
+   existingClaimName: ""
+   storageClassName: "rook-ceph-cephfs-internal"
+   accessMode: ReadWriteMany
+size: 10Gi
+
+camTerraformPV:
+ name: "cam-terraform-pv"
+ persistence:
+   enabled: true
+   useDynamicProvisioning: true
+   existingClaimName: ""
+   storageClassName: "rook-ceph-cephfs-internal"
+   accessMode: ReadWriteMany
+size: 15Gi
+
+camBPDAppDataPV:
+ name: "cam-bpd-appdata-pv"
+ persistence:
+   enabled: true
+   useDynamicProvisioning: true
+   existingClaimName: ""
+   storageClassName: "rook-ceph-cephfs-internal"
+   accessMode: ReadWriteMany
+size: 15Gi
+camBpmProvider:
+   replicaCount: 0
+camAnsibleProvider:
+   replicaCount: 1
+camIcoProvider:
+   replicaCount: 1
+camBrokerProvider:
+   replicaCount: 1
+storeNamespace: helm-consume-test
+

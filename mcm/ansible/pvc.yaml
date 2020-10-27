@@ -1,0 +1,12 @@
+apiVersion: v1
+metadata:
+  name: posgresdb
+  namespace: ansible-tower
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: rook-ceph-block-internal
+  volumeMode: Filesystem

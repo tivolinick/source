@@ -1,0 +1,72 @@
+apiVersion: ceph.rook.io/v1
+kind: CephCluster
+metadata:
+  name: rook-ceph
+  namespace: rook-ceph
+spec:
+  cephVersion:
+    image: ceph/ceph:v14.2
+    allowUnsupported: false
+  dataDirHostPath: /var/lib/rook
+  skipUpgradeChecks: false
+  mon:
+    count: 1
+    allowMultiplePerNode: false
+  dashboard:
+    enabled: true
+    ssl: true
+  monitoring:
+    enabled: false
+    rulesNamespace: rook-ceph
+  network:
+    hostNetwork: false
+  rbdMirroring:
+    workers: 0
+  placement:
+    all:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+          - matchExpressions:
+            - key: role
+              operator: In
+              values:
+              - storage-node
+      podAffinity:
+      podAntiAffinity:
+      tolerations:
+      - key: storage-node
+        operator: Exists
+  annotations:
+  resources:
+  removeOSDsIfOutAndSafeToRemove: false
+  storage: 
+    useAllNodes: false
+    useAllDevices: false
+    topologyAware: true
+    deviceFilter:
+    config:
+      databaseSizeMB: "1024" # uncomment if the disks are smaller than 100 GB
+      journalSizeMB: "1024"  # uncomment if the disks are 20 GB or smaller
+    nodes:
+    - name: "worker0.ndfmcm.os.fyre.ibm.com" 
+      devices: 
+      - name: "vdc" 
+    - name: "worker1.ndfmcm.os.fyre.ibm.com" 
+      devices: 
+      - name: "vdc" 
+    - name: "worker2.ndfmcm.os.fyre.ibm.com" 
+      devices: 
+      - name: "vdc" 
+    - name: "worker3.ndfmcm.os.fyre.ibm.com" 
+      devices: 
+      - name: "vdc" 
+    - name: "worker4.ndfmcm.os.fyre.ibm.com" 
+      devices: 
+      - name: "vdc" 
+
+  disruptionManagement:
+    managePodBudgets: false
+    osdMaintenanceTimeout: 30
+    manageMachineDisruptionBudgets: false
+    machineDisruptionBudgetNamespace: openshift-machine-api

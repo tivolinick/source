@@ -1,0 +1,1 @@
+cloudctl login -a https://icp-console.apps.ndfmcm.os.fyre.ibm.com --skip-ssl-validation -u admin -p passw0rd -n services

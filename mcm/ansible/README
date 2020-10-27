@@ -1,0 +1,3 @@
+in the ansible dir you have to edit the inventory file to set the URL and the kubeadmin password
+
+add   - name: registry.redhat.io/* to imagepolicy or clusterimagepolicy

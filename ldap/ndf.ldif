@@ -1,0 +1,18 @@
+
+dn: uid=ndf,ou=People,dc=ndf,dc=local
+objectClass: top
+objectClass: account
+objectClass: posixAccount
+objectClass: shadowAccount
+cn: ndf
+uid: ndf
+uidNumber: 500
+gidNumber: 100
+homeDirectory: /home/ndf
+loginShell: /bin/bash
+userPassword: {crypt}x
+shadowLastChange: 17058
+shadowMin: 0
+shadowMax: 99999
+shadowWarning: 7
+

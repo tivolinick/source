@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  annotations:
+    helm.sh/resource-policy: keep
+  finalizers:
+  - kubernetes.io/pvc-protection
+  labels:
+    app.kubernetes.io/instance: cam
+    app.kubernetes.io/managed-by: Tiller
+    app.kubernetes.io/name: cam-ibm-cam
+    helm.sh/chart: ibm-cam-4.2.1
+    release: cam
+  name: cam-terraform-pv
+  namespace: services
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 15Gi
+  storageClassName: rook-ceph-cephfs-internal
+  volumeMode: Filesystem
